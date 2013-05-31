@@ -43,11 +43,14 @@ function callingdwe()
 		 if(patients==null)
 			 {
 			 	alert("Patient not registered!");
+			 	 dwr.util.removeAllRows("tbod");
 			 	
 			 }
 		
 		 else{
-			alert(patients[0].error);
+			 if(patients[0].error!=null){
+				alert(patients[0].error);
+			 }
 			
 		 dwr.util.removeAllRows("tbod");
 		 dwr.util.addRows("tbod",patients,cellFunctions); 

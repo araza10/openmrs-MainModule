@@ -39,7 +39,7 @@ public class  smsmoduleManageController {
 		//model.addAttribute("user", Context.getAuthenticatedUser());
 	}
 	
-	@RequestMapping(value = "/module/OpenMRSSMSModule/manage", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/smsmodule/manage", method = RequestMethod.POST)
 	public void storingOutbound(@RequestParam(value="cellnum", required=true)String[] m, @RequestParam(value="txtMsg", required=true)String message,
 			@RequestParam(value="patientid", required=true)String patientid, ModelMap model){
 		
