@@ -19,7 +19,13 @@
         <addAutoIncrement tableName="project" columnName="projectId" columnDataType="int(11)"/>
  		<addUniqueConstraint tableName="project" columnNames="name" constraintName="name"/>
     </changeSet>
-    
+
+    <changeSet author="boby" id="insertinginproject">
+    <insert schemaName="openmrs" tableName="project">
+        <column name="name" type="varchar(255)" value="SMSProject"/>
+    </insert>
+</changeSet>
+
          <changeSet id="2" author="boby">
                                        <createTable tableName="device">
                           <column name="deviceId" type="int(11)"><constraints primaryKey="true" nullable="false" /></column>
@@ -98,28 +104,7 @@
                 referencedColumnNames="projectId"/>                     
                </changeSet>
                
-               <!-- <changeSet author="boby" id="5">
-                   	<createTable tableName="reminder">
-            <column name="reminder_id" type="int(11)"><constraints primaryKey="true" nullable="false" /></column>
-             <column name="name" type="varchar(50)" defaultValue="NULL"></column>
-             <column name="description" type="varchar(500)" defaultValue="NULL"></column>
-             <column name="category" type="varchar(20)"></column>
-                  	</createTable>
-               <addAutoIncrement tableName="reminder" columnName="reminder_id" columnDataType="int(11)"/>
-               </changeSet>  -->
-               
-                              <changeSet author="boby" id="6">
-                   	<createTable tableName="reminder_text">
-            <column name="record_num" type="int(11)"><constraints primaryKey="true" nullable="false" /></column>
-             <column name="text" type="varchar(500)" defaultValue="NULL"></column>
-             <column name="description" type="varchar(500)" defaultValue="NULL"></column>
-             <column name="reminder_id" type="int(11)"></column>
-                  	</createTable>
-               <addAutoIncrement tableName="reminder_text" columnName="record_num" columnDataType="int(11)"/>
-               <addForeignKeyConstraint constraintName="reminder_reminder_text" baseTableName="reminder_text" baseColumnNames="reminder_id" referencedTableName="reminder"
-                referencedColumnNames="reminder_id"/>  
-               </changeSet>
-               
+            
                               <changeSet author="boby" id="5">
                    	<createTable tableName="reminder">
             <column name="reminder_id" type="int(11)"><constraints primaryKey="true" nullable="false" /></column>
@@ -130,4 +115,17 @@
                   	</createTable>
                <addAutoIncrement tableName="reminder" columnName="reminder_id" columnDataType="int(11)"/>
                </changeSet>
+               
+                              <changeSet author="boby" id="insertinginreminder">
+    <insert schemaName="openmrs" tableName="reminder">
+        <column name="name" type="varchar(50)" value="SMS_TB"/>
+        <column name="description" type="varchar(50)" value="This sms is sent to TB Patients only"/>
+        <column name="text" type="varchar(50)" value="TB Patients SMS text"/>
+    </insert>
+        <insert schemaName="openmrs" tableName="reminder">
+        <column name="name" type="varchar(50)" value="SMS_HIV"/>
+        <column name="description" type="varchar(50)" value="This sms is sent to HIV Patients only"/>
+        <column name="text" type="varchar(50)" value="HIV Patients SMS text"/>
+    </insert>
+</changeSet>            
 </databaseChangeLog>
